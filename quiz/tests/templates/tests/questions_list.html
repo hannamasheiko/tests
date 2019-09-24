@@ -1,0 +1,16 @@
+{% extends 'user/base.html' %}
+
+<body>
+{% block content %}
+
+{% for question in questions %}
+<div class="post">
+    <h1><a href="{% url 'add_answers' question_id=question.pk test_id=question.test.pk %}">{{ question.question_text }}</a></h1>
+    {% for answer in question.get_answers_variant%}
+    <p>{{answer.answer}}</p>
+    {% endfor %}
+</div>
+{% endfor %}
+
+{% endblock content %}
+</body>

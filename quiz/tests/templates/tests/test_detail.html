@@ -1,0 +1,53 @@
+{% extends 'user/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="post">
+
+    <div class="date">
+        {{ test.author.username }}||{{ test.created_date }}
+
+    </div>
+
+    {% if user.username == test.author.username %}
+    <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+       href="{% url 'add_questions' test_id=test.pk %}">Добавить вопрос</a>
+    <a class="btn btn-primary btn-lg active" role="button" aria-pressed="true"
+       href="{% url 'questions_list' test_id=test.pk %}">Добавить ответы</a>
+
+    {% endif %}
+    <h1>{{ test.title }}</h1>
+    <p>{{ test.test_text|linebreaksbr }}</p>
+
+    <p>Количество прохождений: {{ test_count|linebreaksbr }}</p>
+    {% if user.is_authenticated %}
+    <a href="{% url 'test_pass' test_id=test.pk %}" class="btn btn-primary btn-lg active" role="button"
+       aria-pressed="true">Пройти тест</a>
+    {% endif %}
+</div>
+
+
+{% if user.is_authenticated %}
+<div class="col-md-7">
+    <h2>Оставьте комменарий:</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form }}
+        <button type="submit" class="save btn btn-default">Добавить комментарий</button>
+    </form>
+    {% endif %}
+</div>
+
+<div class="commemts">
+    <div class="col-md-10">
+        {% for comment in test.comments.all %}
+        <div class="comment">
+            <div class="date">{{ comment.created_date }}</div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.comment_text|linebreaks }}</p>
+        </div>
+        {% empty %}
+        <p>No comments here yet :(</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'user/base.html' %}
+
+<body>
+{% block content %}
+
+<h4>Количество правильных ответов:{{result_test.right}}</h4>
+<h4>Количество неправильных ответов:{{result_test.wrong}}</h4>
+<h4>%:{{result_test.percent}}</h4>
+
+{% endblock content %}
+</body>

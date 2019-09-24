@@ -1,0 +1,18 @@
+{% extends 'user/base.html' %}
+
+<body>
+{% block content %}
+
+{% for test in tests %}
+<div class="post">
+    <div class="date">
+        {{ test.created_date }}
+    </div>
+    <h1>Test: {{ test.title }}</h1>
+    <p>{{ test.test_text|linebreaksbr }}</p>
+</div>
+{% endfor %}
+
+
+{% endblock content %}
+</body>

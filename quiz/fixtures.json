@@ -1,0 +1,523 @@
+[
+  {
+    "model": "user.customuser",
+    "pk": 1,
+    "fields": {
+      "username" : "hanna",
+      "first_name": "Hanna",
+      "last_name": "Kornieieva",
+      "password": "pbkdf2_sha256$100000$lMIAz0rQGM3J$hYLs2a6m34mNquo3bYY9bvsGj8S+JFF6RMCfV8sYnVE=",
+      "email" : "hanna@gmail.com",
+      "birth_date" : "2019-09-13",
+      "information" : "Основная работа Геральта — за деньги уничтожать опасных чудовищ. Однако, он не всегда готов бездумно выполнять заказы своих нанимателей. К примеру, он отказывается уничтожать существ, обладающих высоким интеллектом, или драконов, которые находятся под угрозой вымирания.",
+      "profile_image": "/photos/9/IMG_20180214_124620.jpg"
+    }
+  },
+  {
+    "model": "tests.test",
+    "pk": 1,
+    "fields": {
+      "author": 1,
+      "title": "Ведьмак",
+      "test_text": "О Геральте из Ривии",
+      "created_date" : "2019-09-19"
+
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 1,
+    "fields": {
+      "test": 1,
+      "question_text": "1",
+      "created_date": "2019-09-19"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 2,
+    "fields": {
+      "test": 1,
+      "question_text": "2",
+      "created_date": "2019-09-19"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 3,
+    "fields": {
+      "test": 1,
+      "question_text": "3",
+      "created_date": "2019-09-19"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 4,
+    "fields": {
+      "test": 1,
+      "question_text": "4",
+      "created_date": "2019-09-19"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 5,
+    "fields": {
+      "test": 1,
+      "question_text": "5",
+      "created_date": "2019-09-19"
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 1,
+    "fields": {
+      "answer": "a",
+      "question": 1,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 2,
+    "fields": {
+      "answer": "b",
+      "question": 1,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 3,
+    "fields": {
+      "answer": "c",
+      "question": 1,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 4,
+    "fields": {
+      "answer": "d",
+      "question": 1,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 5,
+    "fields": {
+      "answer": "a",
+      "question": 2,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 6,
+    "fields": {
+      "answer": "b",
+      "question": 2,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 7,
+    "fields": {
+      "answer": "c",
+      "question": 2,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 8,
+    "fields": {
+      "answer": "d",
+      "question": 2,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 9,
+    "fields": {
+      "answer": "a",
+      "question": 3,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 10,
+    "fields": {
+      "answer": "b",
+      "question": 3,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 11,
+    "fields": {
+      "answer": "c",
+      "question": 3,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 12,
+    "fields": {
+      "answer": "d",
+      "question": 3,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 13,
+    "fields": {
+      "answer": "a",
+      "question": 4,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 14,
+    "fields": {
+      "answer": "b",
+      "question": 4,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 15,
+    "fields": {
+      "answer": "c",
+      "question": 4,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 16,
+    "fields": {
+      "answer": "d",
+      "question": 4,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 17,
+    "fields": {
+      "answer": "a",
+      "question": 5,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 18,
+    "fields": {
+      "answer": "b",
+      "question": 5,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 19,
+    "fields": {
+      "answer": "c",
+      "question": 5,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 20,
+    "fields": {
+      "answer": "d",
+      "question": 5,
+      "accepted": false
+    }
+  },
+  {
+    "model": "user.customuser",
+    "pk": 2,
+    "fields": {
+      "username" : "harry",
+      "first_name": "Harry",
+      "last_name": "Potter",
+      "password": "pbkdf2_sha256$100000$lMIAz0rQGM3J$hYLs2a6m34mNquo3bYY9bvsGj8S+JFF6RMCfV8sYnVE=",
+      "email" : "harry@gmail.com",
+      "birth_date" : "1980-07-31",
+      "information" : "На одиннадцатый день рождения Гарри узнаёт, что является волшебником и ему уготовано место в школе волшебства «Хогвартс», в которой он будет практиковать магию под руководством директора Альбуса Дамблдора и других школьных профессоров.",
+      "profile_image": "/photos/9/IMG_20180214_124620.jpg"
+    }
+  },
+  {
+    "model": "tests.test",
+    "pk": 2,
+    "fields": {
+      "author": 2,
+      "title": "Harry Potter",
+      "test_text": "Harry Potter is a series of fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends Hermione Granger and Ron Weasley, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's struggle against Lord Voldemort, a dark wizard who intends to become immortal",
+      "created_date" : "2019-09-24"
+
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 6,
+    "fields": {
+      "test": 2,
+      "question_text": "1",
+      "created_date": "2019-09-24"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 7,
+    "fields": {
+      "test": 2,
+      "question_text": "2",
+      "created_date": "2019-09-24"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 8,
+    "fields": {
+      "test": 2,
+      "question_text": "3",
+      "created_date": "2019-09-24"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 9,
+    "fields": {
+      "test": 2,
+      "question_text": "4",
+      "created_date": "2019-09-24"
+    }
+  },
+  {
+    "model": "tests.question",
+    "pk": 10,
+    "fields": {
+      "test": 2,
+      "question_text": "5",
+      "created_date": "2019-09-24"
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 21,
+    "fields": {
+      "answer": "a",
+      "question": 6,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 22,
+    "fields": {
+      "answer": "b",
+      "question": 6,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 23,
+    "fields": {
+      "answer": "c",
+      "question": 6,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 24,
+    "fields": {
+      "answer": "d",
+      "question": 6,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 25,
+    "fields": {
+      "answer": "a",
+      "question": 7,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 26,
+    "fields": {
+      "answer": "b",
+      "question": 7,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 27,
+    "fields": {
+      "answer": "c",
+      "question": 7,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 28,
+    "fields": {
+      "answer": "d",
+      "question": 7,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 29,
+    "fields": {
+      "answer": "a",
+      "question": 8,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 30,
+    "fields": {
+      "answer": "b",
+      "question": 8,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 31,
+    "fields": {
+      "answer": "c",
+      "question": 8,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 32,
+    "fields": {
+      "answer": "d",
+      "question": 8,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 33,
+    "fields": {
+      "answer": "a",
+      "question": 9,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 34,
+    "fields": {
+      "answer": "b",
+      "question": 9,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 35,
+    "fields": {
+      "answer": "c",
+      "question": 9,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 36,
+    "fields": {
+      "answer": "d",
+      "question": 9,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 37,
+    "fields": {
+      "answer": "a",
+      "question": 10,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 38,
+    "fields": {
+      "answer": "b",
+      "question": 10,
+      "accepted": false
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 39,
+    "fields": {
+      "answer": "c",
+      "question": 10,
+      "accepted": true
+    }
+  },
+  {
+    "model": "tests.answer",
+    "pk": 40,
+    "fields": {
+      "answer": "d",
+      "question": 10,
+      "accepted": false
+    }
+  },
+
+  {
+    "model": "tests.comment",
+    "pk": 1,
+    "fields": {
+      "test": 1,
+      "author": "harry",
+      "comment_text": "Great!!!!",
+      "created_date" : "2019-09-24"
+  }
+  },
+  {
+    "model": "tests.comment",
+    "pk": 2,
+    "fields": {
+      "test": 2,
+      "author": "hanna",
+      "comment_text": "Супер",
+      "created_date": "2019-09-24"
+    }
+  }
+]

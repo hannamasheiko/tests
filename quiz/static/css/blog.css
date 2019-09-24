@@ -1,0 +1,84 @@
+h1 a {
+        color: #FCA205;
+    }
+
+h1 a {
+        color: #FCA205;
+        font-family: 'Lobster';
+    }
+
+.page-header {
+        background-color: #ff9400;
+        margin-top: 0;
+        padding: 20px 20px 20px 60px;
+    }
+
+    .page-header h3, .page-header h3 a, .page-header h3 a:visited, .page-header h3 a:active {
+        color: #ffffff;
+        font-size: 12pt;
+        text-decoration: none;
+ }
+   .page-head .top-menu li  a h1{
+        font-size: 16px;
+}
+
+    .content {
+        margin-left: 40px;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Lobster', cursive;
+    }
+
+    .date {
+        float: right;
+        color: #828282;
+    }
+
+    .save {
+        float: right;
+    }
+    .post-form textarea, .post-form input {
+        width: 100%;
+    }
+
+    .top-menu, .top-menu:hover, .top-menu:visited {
+        color: #ff9400;
+        float: right;
+        font-size: 16px;
+        margin-left: 20px;
+    }
+
+    .post {
+        margin-bottom: 70px;
+    }
+
+    .post h1 a, .post h1 a:visited {
+        color: #7c44e5;
+    }
+    a  h3{
+        color: #ff9400;
+        float: right;
+        font-size: 16px;
+        margin-left: 20px;
+        padding-top: 10px;
+}
+
+    .nav>li>a {
+       padding: 0px;
+    }
+
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}
+
+
+.commemts {
+    padding-top: 50px;
+}
+
+#submit-btn{
+   margin-top: 20px;
+   margin-bottom: 20px;
+}

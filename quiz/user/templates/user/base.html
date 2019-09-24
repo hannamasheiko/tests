@@ -1,0 +1,50 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <title>Hanna_TESTS</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-static-top nav navbar-inverse">
+
+    <div class="container">
+
+        <ul class="nav nav-pills navbar-right ">
+            {% if not user.is_authenticated %}
+            <li><a href="{% url 'register' %}"><h3>Register</h3></a></li>
+            <li><a href="{% url 'login' %}"><h3>LogIn</h3></a></li>
+            {% endif %}
+
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'account' %}"><h3>Account</h3></a></li>
+            <li><a href="{% url 'logout' %}"><h3>LogOut</h3></a></li>
+            <li><a href="{% url 'user' %}"><h3>Info</h3></a></li>
+            <li><a href="{% url 'test' %}"><h3>Add Test</h3></a></li>
+            {% endif %}
+        </ul>
+
+        <h1><a href="/">Tests</a></h1>
+    </div>
+</nav>
+
+<div class="content container">
+    <div class="row">
+        <div class="col-md-12">
+            {% block content %}
+
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

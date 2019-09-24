@@ -1,0 +1,60 @@
+{% extends 'user/base.html' %}
+
+<body>
+{% block content %}
+
+<div class="search">
+    <form method="GET" action="">
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search test" name="q"
+                               value="{{ request.GET.q }}"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit" value="Search">Поиск</button>
+                    </span>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="col-md-4">
+                    <a class="btn btn-primary btn-md active" role="button" aria-pressed="true"
+
+                       href="{% url 'test_filter' %}">Пройденные тесты</a></h1>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% for test in object_list %}
+<div class="post">
+    <div class="date">
+        {{ test.created_date }}
+    </div>
+    <h1><a href="{% url 'test_detail' pk=test.pk %}">Test: {{ test.title }}</a></h1>
+    <p>{{ test.test_text|linebreaksbr }}</p>
+</div>
+{% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if object_list.has_previous %}
+            <a href="?{{ page_request_var }}={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+        </span>
+
+        {% if object_list.has_next %}
+            <a href="?{{ page_request_var }}={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock content %}
+</body>

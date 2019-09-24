@@ -1,0 +1,92 @@
+{% extends 'user/base.html' %}
+
+<body>
+{% block content%}
+
+
+{% for question in questions %}
+<form>
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-topic" id="q_{{question.id}}">
+            <label>{{ question.question_text }}</label>
+        </div>
+        {% for answer in question.get_answers_variant %}
+        <div class="col-select" id="{{question.id}}">
+            <input type="radio" name="choice" value="{{ answer.id }}"/>
+            <label for="choice{{ forloop.counter }}">{{ answer.answer }}</label><br/>
+        </div>
+        {% endfor %}
+    </div>
+</form>
+{% endfor %}
+<input id="submit-btn" type="submit" value="Vote" class="btn btn-primary btn-lg active"/>
+
+
+<script type="text/javascript">
+
+    $(document).on('click', '#submit-btn', function (event) {
+        var d1 = $.Deferred();
+        var d2 = $.Deferred();
+        var response_data = [];
+        var question_objs = $('.col-topic');
+        var choice_objs = $('.col-select');
+
+        var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+
+        for (i = 0; i < question_objs.length; i++) {
+            var question_id = question_objs[i].id;
+
+            for (c = 0; c < choice_objs.length; c++) {
+                if ('q_' + choice_objs[c].id === question_objs[i].id && $(choice_objs[c]).find('input')[0].checked) {
+                    console.log('checked', $(choice_objs[c]).find('input')[0].checked);
+
+                    var choice_id = $(choice_objs[c]).find('input').val();
+                    var choice_text = $(choice_objs[c]).find('label').text();
+                    var question_choice = {
+                        question_id: question_id,
+                        choice_id: choice_id,
+                        choice_text: choice_text
+                    };
+                    response_data.push(question_choice);
+
+                }
+
+            }
+
+        }
+
+        console.log('ready', response_data);
+
+        d1.done(function (result) {
+            console.log('res', result);
+            var formData = new FormData($('#submit_form')[0]);
+
+            formData.append("list", JSON.stringify(result));
+            $.ajax({
+                type: "POST",
+                headers: {
+                    "X-CSRFToken": csrftoken
+                },
+                url: "{% url 'test_pass' test_id=test_id %}",
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    window.location.href = "{% url 'test_result' test_id=test_id %}";
+                }
+            });
+        });
+
+        $.when(d1, d2).done(function (v1, v2) {
+            console.log('d1-done:', v1);
+            console.log('d1-done:', v2);
+        });
+
+        d1.resolve(response_data);
+        d2.resolve("abc");
+    });
+</script>
+
+{% endblock content %}
+</body>
