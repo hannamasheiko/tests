@@ -4,7 +4,7 @@ from .views import add_test, tests_list, add_questions, test_detail, questions_l
 
 urlpatterns = [
     url(r'^test/$', add_test, name='test'),
-    url(r'^$', tests_list),
+    url(r'^$', tests_list, name='test_list'),
     url(r'^test_filter/$',test_filter , name='test_filter'),
     url(r'^test/(?P<pk>[0-9]+)/$', test_detail, name='test_detail'),
     url(r'^test/(?P<test_id>[0-9]+)/add_questions/$', add_questions, name='add_questions'),

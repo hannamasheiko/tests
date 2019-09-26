@@ -18,7 +18,7 @@ def add_test(request):
             post.created_date = timezone.now()
             post.save()
 
-            return redirect('user/base.html')
+            return redirect('test_list')
     else:
         form = TestForm()
     return render(request, 'tests/add_test.html', {'form': form})
