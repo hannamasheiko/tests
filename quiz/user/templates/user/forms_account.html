@@ -3,7 +3,7 @@
 
 {% block content %}
 <h1>{{ title }}</h1>
-<form method="POST" class="post-form">{% csrf_token %}
+<form enctype="multipart/form-data" method="POST" class="post-form">{% csrf_token %}
     {{ form|crispy }}
     <button type="submit" class="save btn btn-default">Save</button>
 </form>

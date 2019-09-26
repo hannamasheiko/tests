@@ -40,17 +40,19 @@ def login_view(request):
 
 def account_view(request):
     title = "Account"
-    form = CustomUserChangeForm(request.POST or None)
-    if form.is_valid():
-        user = request.user
-        user.first_name = form.cleaned_data.get('first_name')
-        user.last_name = form.cleaned_data.get('last_name')
-        user.birth_date = form.cleaned_data.get('birth_date')
-        user.information = form.cleaned_data.get('information')
-        user.profile_image = form.cleaned_data.get('profile_image')
-        user.save()
-        return redirect('/')
 
+    if request.method == "POST":
+        form = CustomUserChangeForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = request.user
+            user.first_name = form.cleaned_data.get('first_name')
+            user.last_name = form.cleaned_data.get('last_name')
+            user.birth_date = form.cleaned_data.get('birth_date')
+            user.information = form.cleaned_data.get('information')
+            user.profile_image = form.cleaned_data.get('profile_image')
+            user.save()
+            return redirect('/')
+    form = CustomUserChangeForm()
     context = {
         'form': form,
         'title': title
@@ -70,5 +72,5 @@ def logout_view(request):
 
 def user_info(request):
     query_results = CustomUser.objects.filter(username=request.user).first()
-    print(query_results)
+
     return render(request, 'user/user_info.html', {'query_results': query_results})

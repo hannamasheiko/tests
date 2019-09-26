@@ -1,6 +1,6 @@
 *.pyc
 __pycache__
-.dtests/
+dtests
 db.sqlite3
 .DS_Store
 .idea/
