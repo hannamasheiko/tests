@@ -120,15 +120,30 @@ def questions_list(request, test_id):
 
 def add_answers(request, question_id, test_id):
     question = Question.objects.get(pk=question_id)
-    AnswerFormSet = inlineformset_factory(Question, Answer, fields=('answer', 'accepted'), extra=4, max_num=4)
+    AnswerFormSet = inlineformset_factory(Question, Answer, fields=('answer', 'accepted'), extra=4, max_num=4, min_num=4, validate_min=True, can_delete=False)
 
     if request.method == "POST":
         aformset = AnswerFormSet(request.POST, instance=question)
-        if aformset.is_valid():
-            aformset.created_date = timezone.now()
-            aformset.save()
 
-            return redirect('questions_list', test_id=question.test.pk)
+        accepted = aformset.data.dict()
+        accepted_count = 0
+        for name, accept in accepted.items():
+            if accept == 'on':
+                accepted_count += 1
+
+        if aformset.is_valid():
+            if accepted_count == 0:
+                messages.info(request, 'Укажите верный вариант ответа')
+            elif accepted_count > 1:
+                messages.info(request, 'Верный вариант только один')
+            else:
+
+                aformset.created_date = timezone.now()
+                aformset.save()
+
+                return redirect('questions_list', test_id=question.test.pk)
+        else:
+            messages.info(request, 'Впишите 4 варианта ответа')
 
     aformset = AnswerFormSet(instance=question)
     return render(request, 'tests/add_answers.html', {'aformset': aformset})
