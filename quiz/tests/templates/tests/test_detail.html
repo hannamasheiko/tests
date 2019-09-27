@@ -20,7 +20,7 @@
     <p>{{ test.test_text|linebreaksbr }}</p>
 
     <p>Количество прохождений: {{ test_count|linebreaksbr }}</p>
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated  and questions%}
     <a href="{% url 'test_pass' test_id=test.pk %}" class="btn btn-primary btn-lg active" role="button"
        aria-pressed="true">Пройти тест</a>
     {% endif %}

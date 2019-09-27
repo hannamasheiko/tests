@@ -7,6 +7,7 @@ from django.shortcuts import redirect, render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.forms import inlineformset_factory
 import json
+from django.contrib import messages
 
 
 def add_test(request):
@@ -75,6 +76,7 @@ def test_filter(request):
 
 def test_detail(request, pk):
     test = get_object_or_404(Test, pk=pk)
+    questions = Question.objects.filter(test=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -87,22 +89,24 @@ def test_detail(request, pk):
         form = CommentForm()
     test_count = test.scores.count()
 
-    context = {'test': test, 'form': form, 'test_count': test_count}
+    context = {'test': test, 'form': form, 'test_count': test_count, 'questions': questions}
 
     return render(request, 'tests/test_detail.html', context)
 
 
 def add_questions(request, test_id):
     test = Test.objects.get(pk=test_id)
-    QuestionFormSet = inlineformset_factory(Test, Question, fields=('question_text',), extra=5)
-
+    QuestionFormSet = inlineformset_factory(Test, Question, fields=('question_text',), extra=1, min_num=5, validate_min=True,)
     if request.method == "POST":
         formset = QuestionFormSet(request.POST, instance=test)
+
         if formset.is_valid():
             formset.created_date = timezone.now()
             formset.save()
 
-            return redirect('add_questions', test_id=test.pk)
+            return redirect('test_detail', pk=test.pk)
+        else:
+            messages.info(request, 'Заполните минимум 5 вопросов')
 
     formset = QuestionFormSet(instance=test)
     return render(request, 'tests/add_questions.html', {'formset': formset})
@@ -149,6 +153,8 @@ def test_pass(request, test_id):
             question_id = question_id_s.split('_')[1]
             print(question_id)
             answer_id = a.get('choice_id')
+            if answer_id == False:
+                wrong +=1
             answer = Answer.objects.filter(pk=answer_id).values('accepted')
             print(answer)
             for ans in answer:

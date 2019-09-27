@@ -36,7 +36,7 @@
 
         for (i = 0; i < question_objs.length; i++) {
             var question_id = question_objs[i].id;
-
+            var is_answered = false;
             for (c = 0; c < choice_objs.length; c++) {
                 if ('q_' + choice_objs[c].id === question_objs[i].id && $(choice_objs[c]).find('input')[0].checked) {
                     console.log('checked', $(choice_objs[c]).find('input')[0].checked);
@@ -49,8 +49,17 @@
                         choice_text: choice_text
                     };
                     response_data.push(question_choice);
-
+                    is_answered = true;
                 }
+
+            }
+
+            if (!is_answered){
+                response_data.push({
+                        question_id: question_id,
+                        choice_id: false,
+                        choice_text: false
+                    });
 
             }
 
