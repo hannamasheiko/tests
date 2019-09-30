@@ -2,7 +2,6 @@ from django.test import TestCase, Client
 from django.urls import reverse
 from ..models import Test
 
-
 from django.utils.module_loading import import_module
 
 import_module('user', package='quiz')
@@ -25,4 +24,3 @@ class TestsListViewTest(TestCase):
         self.assertEqual(resp.status_code, 200)
 
         self.assertTemplateUsed(resp, 'tests/tests_list.html')
-

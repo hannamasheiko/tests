@@ -14,11 +14,11 @@ class TestModels(TestCase):
         Test.objects.create(author=user, title='First', test_text='This is for me')
 
     def test_title_label(self):
-        test=Test.objects.get(id=1)
+        test = Test.objects.get(id=1)
         field_label = test._meta.get_field('title').verbose_name
-        self.assertEquals(field_label,'title')
+        self.assertEquals(field_label, 'title')
 
     def test_title_max_length(self):
-        test=Test.objects.get(id=1)
+        test = Test.objects.get(id=1)
         max_length = test._meta.get_field('title').max_length
-        self.assertEquals(max_length,200)
+        self.assertEquals(max_length, 200)
