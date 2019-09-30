@@ -1,5 +1,7 @@
 {% extends 'user/base.html' %}
 {% load crispy_forms_tags %}
+{% load socialaccount %}
+{% providers_media_js %}
 
 {% block content %}
 <h1>{{ title }}</h1>
@@ -9,9 +11,10 @@
 </form>
 
 <div class="social">
-    <ul class="social-network social-circle">
-        <li><a href="{% url 'social:begin' 'google-oauth2' %}" class="icoGoogle" title="Google +">Login with G+</a></li>
-        <li><a href="{% url 'social:begin' 'facebook' %}">Facebook</a></li>
+    <p>{{user}}</p>
+    <ul>
+        <li><a href='{% provider_login_url "facebook" method="oauth2" %}'>Facebook</a></li>
+        <li><a href='{% provider_login_url "google" %}'>Google</a></li>
     </ul>
 </div>
 

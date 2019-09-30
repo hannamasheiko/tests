@@ -37,12 +37,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'user',
     'crispy_forms',
     'tests',
-    'social_django'
-    # 'social.apps.django_app.default'
-    # 'user.apps.UsersConfig', # new
+    'social_django',
+
+    #allauth
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 AUTH_USER_MODEL = 'user.CustomUser'
@@ -137,17 +147,23 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 # python-social-auth settings
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
-
-    'social_core.backends.google.GoogleOAuth2',
+    'allauth.account.auth_backends.AuthenticationBackend',
 
 )
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '745899393680-prff69m7dp57ecpsdq1ovigv2ha6nv74.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'W9P615kPyqFnX8OqnLLY5CzQ'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '745899393680-prff69m7dp57ecpsdq1ovigv2ha6nv74.apps.googleusercontent.com'
+# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'W9P615kPyqFnX8OqnLLY5CzQ'
+#
+# SOCIAL_AUTH_FACEBOOK_KEY = '1289682014533586'
+# SOCIAL_AUTH_FACEBOOK_SECRET = '805a63988e376c40eddc73ea0eacd0a5'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '1289682014533586'
-SOCIAL_AUTH_FACEBOOK_SECRET = '805a63988e376c40eddc73ea0eacd0a5'
+# SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+SECURE_SSL_REDIRECT = False
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+
+ACCOUNT_USERNAME_REQURIED=True

@@ -3,7 +3,7 @@ from .views import register_view, account_view, login_view, index, logout_view, 
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from django.urls import path, include
+from django.urls import include
 
 urlpatterns = [
                   url(r'^admin/', admin.site.urls),
@@ -12,6 +12,6 @@ urlpatterns = [
                   url(r'^login/$', login_view, name='login'),
                   url(r'^logout/$', logout_view, name='logout'),
                   url(r'^user/$', user_info, name='user'),
-                  path('', include('social_django.urls')),
+                  url(r'^accounts/', include('allauth.urls')),
                   url(r'^accounts/profile/$', index),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
